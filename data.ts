@@ -1,5 +1,5 @@
 
-import { Product, Review } from './types';
+import { Product, Review } from './types.ts';
 
 export const products: Product[] = [
   {
@@ -8,7 +8,7 @@ export const products: Product[] = [
     price: 12.00,
     fabric: 'Satin',
     color: 'Blush',
-    image: 'https://images.unsplash.com/photo-1611082216935-7c090bfde384?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&q=80&w=800',
     description: 'Ultra-soft satin that glides over your hair, reducing breakage and frizz. Perfect for everyday elegance.',
     isBestSeller: true
   },
@@ -18,7 +18,7 @@ export const products: Product[] = [
     price: 18.00,
     fabric: 'Silk',
     color: 'Lavender',
-    image: 'https://images.unsplash.com/photo-1615396899839-c99c121888b0?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1582294119335-51f78e0787a4?auto=format&fit=crop&q=80&w=800',
     description: 'Pure 22 momme silk for the ultimate hair protection. Luxuriously soft and beautiful.',
     isBestSeller: true
   },
@@ -28,7 +28,7 @@ export const products: Product[] = [
     price: 14.00,
     fabric: 'Velvet',
     color: 'Dusty Rose',
-    image: 'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1610444583737-9759448a02b3?auto=format&fit=crop&q=80&w=800',
     description: 'Lush velvet with a strong hold. Ideal for thicker hair or adding a pop of texture to your outfit.',
     isBestSeller: false
   },
@@ -38,7 +38,7 @@ export const products: Product[] = [
     price: 12.00,
     fabric: 'Satin',
     color: 'Champagne',
-    image: 'https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1621252178125-9610f4458373?auto=format&fit=crop&q=80&w=800',
     description: 'Elegant champagne tone in a smooth satin finish. The classic go-to for any look.',
     isBestSeller: true
   },
@@ -58,7 +58,7 @@ export const products: Product[] = [
     price: 14.00,
     fabric: 'Velvet',
     color: 'Midnight',
-    image: 'https://images.unsplash.com/photo-1631557551062-8e7918233b3b?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1610444583907-79737f71b9f7?auto=format&fit=crop&q=80&w=800',
     description: 'Deep midnight blue velvet. Sophisticated, strong, and stunning.',
     isBestSeller: false
   },
@@ -68,7 +68,7 @@ export const products: Product[] = [
     price: 12.00,
     fabric: 'Satin',
     color: 'Cream',
-    image: 'https://images.unsplash.com/photo-1621252178125-9610f4458373?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1621252179047-94459d278660?auto=format&fit=crop&q=80&w=800',
     description: 'A glowing cream satin that brightens any hairstyle. Gentle enough for overnight use.',
     isBestSeller: false
   }

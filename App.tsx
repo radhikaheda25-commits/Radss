@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { ShoppingBag, Heart, Search, Menu, X, Instagram, ChevronRight, Star, ArrowRight, ShieldCheck, Truck, RefreshCcw } from 'lucide-react';
-import { products, reviews } from './data';
-import { Product, CartItem, Fabric } from './types';
+import { products, reviews } from './data.ts';
+import { Product, CartItem, Fabric } from './types.ts';
 
 // --- Sub-components ---
 
@@ -81,7 +81,7 @@ const Hero = ({ onShopNow }: { onShopNow: () => void }) => (
       </div>
       <div className="flex-1 relative">
         <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl rotate-2">
-          <img src="https://images.unsplash.com/photo-1631557551062-8e7918233b3b?auto=format&fit=crop&q=80&w=1000" alt="Luna Loops Scrunchie Stack" className="w-full h-[500px] object-cover" />
+          <img src="https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&q=80&w=1000" alt="Luna Loops Scrunchie" className="w-full h-[500px] object-cover" />
         </div>
         <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-lavender rounded-full blur-3xl opacity-50 -z-0"></div>
         <div className="absolute -top-12 -right-12 w-48 h-48 bg-blush-100 rounded-full blur-3xl opacity-50 -z-0"></div>
@@ -419,7 +419,7 @@ export default function App() {
                 </div>
                 <div className="space-y-4 pt-12">
                   <img src="https://images.unsplash.com/photo-1459156212016-c812468e2115?auto=format&fit=crop&q=80&w=600" className="rounded-2xl h-48 w-full object-cover shadow-lg" alt="Handcrafting" />
-                  <img src="https://images.unsplash.com/photo-1611082216935-7c090bfde384?auto=format&fit=crop&q=80&w=600" className="rounded-2xl h-64 w-full object-cover shadow-lg" alt="Lifestyle shot" />
+                  <img src="https://images.unsplash.com/photo-1611082216935-7c090bfde384?auto=format&fit=crop&q=80&w=600" className="rounded-2xl h-64 w-full object-cover shadow-lg" alt="Finished product" />
                 </div>
               </div>
               <div className="flex-1 space-y-8">
