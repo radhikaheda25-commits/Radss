@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ShoppingBag, Heart, Search, Menu, X, Instagram, ChevronRight, Star, ArrowRight, ShieldCheck, Truck, RefreshCcw } from 'lucide-react';
 import { products, reviews } from './data.ts';
 import { Product, CartItem, Fabric } from './types.ts';
@@ -64,7 +63,7 @@ const Hero = ({ onShopNow }: { onShopNow: () => void }) => (
   <section className="pt-32 pb-16 px-6 bg-blush-50 overflow-hidden">
     <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
       <div className="flex-1 text-center md:text-left space-y-6">
-        <span className="inline-block px-4 py-1 bg-white rounded-full text-xs font-semibold uppercase tracking-widest text-blush">Ethically Handmade</span>
+        <span className="inline-block px-4 py-1 bg-white rounded-full text-xs font-semibold uppercase tracking-widest text-blush">Ethically Handmade in India</span>
         <h1 className="text-5xl md:text-7xl font-serif font-bold text-charcoal leading-tight">
           Soft on Your Hair. <br />
           <span className="italic text-blush-200">Strong on Style.</span>
@@ -81,7 +80,7 @@ const Hero = ({ onShopNow }: { onShopNow: () => void }) => (
       </div>
       <div className="flex-1 relative">
         <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl rotate-2">
-          <img src="https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&q=80&w=1000" alt="Luna Loops Scrunchie" className="w-full h-[500px] object-cover" />
+          <img src="https://images.unsplash.com/photo-1631557551062-8e7918233b3b?auto=format&fit=crop&q=80&w=1000" alt="Desert Bloom Trio" className="w-full h-[500px] object-cover" />
         </div>
         <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-lavender rounded-full blur-3xl opacity-50 -z-0"></div>
         <div className="absolute -top-12 -right-12 w-48 h-48 bg-blush-100 rounded-full blur-3xl opacity-50 -z-0"></div>
@@ -99,7 +98,7 @@ const FeatureBanner = () => (
         </div>
         <div>
           <h4 className="font-bold text-charcoal">Free Shipping</h4>
-          <p className="text-xs text-charcoal/50">On all orders over $40</p>
+          <p className="text-xs text-charcoal/50">On all orders over ₹499</p>
         </div>
       </div>
       <div className="flex items-center gap-4 group">
@@ -107,8 +106,8 @@ const FeatureBanner = () => (
           <RefreshCcw size={24} />
         </div>
         <div>
-          <h4 className="font-bold text-charcoal">Easy Returns</h4>
-          <p className="text-xs text-charcoal/50">30-day no-hassle returns</p>
+          <h4 className="font-bold text-charcoal">7-Day Returns</h4>
+          <p className="text-xs text-charcoal/50">Easy hassle-free returns</p>
         </div>
       </div>
       <div className="flex items-center gap-4 group">
@@ -117,14 +116,14 @@ const FeatureBanner = () => (
         </div>
         <div>
           <h4 className="font-bold text-charcoal">Secure Checkout</h4>
-          <p className="text-xs text-charcoal/50">100% encrypted payment</p>
+          <p className="text-xs text-charcoal/50">UPI, Cards & Netbanking</p>
         </div>
       </div>
     </div>
   </div>
 );
 
-const CollectionCard = ({ title, image, color, onClick }: { title: string, image: string, color: string, onClick: () => void }) => (
+const CollectionCard = ({ title, image, onClick }: { title: string, image: string, onClick: () => void }) => (
   <div 
     onClick={onClick}
     className="group relative h-[400px] rounded-3xl overflow-hidden cursor-pointer flex-1 min-w-[300px]"
@@ -165,7 +164,7 @@ const ProductCard: React.FC<{ product: Product, addToCart: (p: Product) => void 
     </div>
     <div className="text-center px-2">
       <h4 className="font-medium text-charcoal group-hover:text-blush transition-colors">{product.name}</h4>
-      <p className="text-charcoal/60 text-sm font-medium mt-1">${product.price.toFixed(2)}</p>
+      <p className="text-charcoal/60 text-sm font-medium mt-1">₹{product.price}</p>
       <p className="text-[10px] text-charcoal/30 uppercase tracking-widest mt-2 font-bold">{product.fabric}</p>
     </div>
   </div>
@@ -218,7 +217,7 @@ const CartDrawer = ({ isOpen, onClose, cart, removeFromCart, updateQuantity }: {
   updateQuantity: (id: string, delta: number) => void
 }) => {
   const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-  const freeShippingThreshold = 40;
+  const freeShippingThreshold = 499;
   const progress = Math.min((total / freeShippingThreshold) * 100, 100);
 
   return (
@@ -232,7 +231,7 @@ const CartDrawer = ({ isOpen, onClose, cart, removeFromCart, updateQuantity }: {
 
         <div className="px-6 py-4 bg-blush-50 space-y-2">
           <p className="text-xs font-medium text-charcoal/60">
-            {total >= freeShippingThreshold ? "Congrats! You've got free shipping!" : `Add $${(freeShippingThreshold - total).toFixed(2)} more for FREE shipping!`}
+            {total >= freeShippingThreshold ? "Congrats! You've got free shipping!" : `Add ₹${(freeShippingThreshold - total)} more for FREE shipping!`}
           </p>
           <div className="h-1.5 w-full bg-white rounded-full overflow-hidden">
             <div className="h-full bg-blush transition-all duration-500" style={{ width: `${progress}%` }}></div>
@@ -251,7 +250,7 @@ const CartDrawer = ({ isOpen, onClose, cart, removeFromCart, updateQuantity }: {
               {cart.map((item) => (
                 <div key={item.id} className="flex gap-4">
                   <div className="w-20 h-24 rounded-lg overflow-hidden flex-shrink-0">
-                    <img src={item.image} className="w-full h-full object-cover" />
+                    <img src={item.image} className="w-full h-full object-cover" alt={item.name} />
                   </div>
                   <div className="flex-1">
                     <div className="flex justify-between">
@@ -265,7 +264,7 @@ const CartDrawer = ({ isOpen, onClose, cart, removeFromCart, updateQuantity }: {
                         <span className="px-3 text-xs font-bold">{item.quantity}</span>
                         <button onClick={() => updateQuantity(item.id, 1)} className="p-1 hover:text-blush transition-colors">+</button>
                       </div>
-                      <span className="font-bold text-sm">${(item.price * item.quantity).toFixed(2)}</span>
+                      <span className="font-bold text-sm">₹{item.price * item.quantity}</span>
                     </div>
                   </div>
                 </div>
@@ -278,7 +277,7 @@ const CartDrawer = ({ isOpen, onClose, cart, removeFromCart, updateQuantity }: {
           <div className="p-6 border-t border-blush-100 space-y-4">
             <div className="flex justify-between items-center text-lg font-bold">
               <span>Subtotal</span>
-              <span>${total.toFixed(2)}</span>
+              <span>₹{total}</span>
             </div>
             <p className="text-xs text-charcoal/40 text-center">Shipping & taxes calculated at checkout</p>
             <button className="w-full bg-charcoal text-white py-4 rounded-full font-bold hover:bg-blush transition-all shadow-xl">
@@ -334,7 +333,7 @@ export default function App() {
   return (
     <div className="min-h-screen selection:bg-blush/30 selection:text-blush-DEFAULT">
       <div className="bg-blush text-white text-[10px] sm:text-xs font-bold py-2 text-center uppercase tracking-[0.2em] px-4">
-        ✨ Free shipping on orders over $40 ✨
+        ✨ Free shipping on orders over ₹499 ✨
       </div>
 
       <Navbar 
@@ -370,20 +369,17 @@ export default function App() {
             <div className="flex flex-wrap gap-8">
               <CollectionCard 
                 title="Satin" 
-                image="https://images.unsplash.com/photo-1550523588-444490403362?auto=format&fit=crop&q=80&w=1000" 
-                color="blush"
+                image="https://images.unsplash.com/photo-1621252178125-9610f4458373?auto=format&fit=crop&q=80&w=1000" 
                 onClick={() => { setActiveFilter('Satin'); setPage('shop'); }}
               />
               <CollectionCard 
                 title="Silk" 
-                image="https://images.unsplash.com/photo-1615396899793-134015f4039b?auto=format&fit=crop&q=80&w=1000" 
-                color="lavender"
+                image="https://images.unsplash.com/photo-1550523588-444490403362?auto=format&fit=crop&q=80&w=1000" 
                 onClick={() => { setActiveFilter('Silk'); setPage('shop'); }}
               />
               <CollectionCard 
                 title="Velvet" 
-                image="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&q=80&w=1000" 
-                color="cream"
+                image="https://images.unsplash.com/photo-1610444583907-79737f71b9f7?auto=format&fit=crop&q=80&w=1000" 
                 onClick={() => { setActiveFilter('Velvet'); setPage('shop'); }}
               />
             </div>
@@ -414,18 +410,18 @@ export default function App() {
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
               <div className="flex-1 grid grid-cols-2 gap-4">
                 <div className="space-y-4">
-                  <img src="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&q=80&w=600" className="rounded-2xl h-64 w-full object-cover shadow-lg" alt="Fabric close up" />
+                  <img src="https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&q=80&w=600" className="rounded-2xl h-64 w-full object-cover shadow-lg" alt="Cottage Trio Aesthetic" />
                   <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&q=80&w=600" className="rounded-2xl h-48 w-full object-cover shadow-lg" alt="Sewing details" />
                 </div>
                 <div className="space-y-4 pt-12">
                   <img src="https://images.unsplash.com/photo-1459156212016-c812468e2115?auto=format&fit=crop&q=80&w=600" className="rounded-2xl h-48 w-full object-cover shadow-lg" alt="Handcrafting" />
-                  <img src="https://images.unsplash.com/photo-1611082216935-7c090bfde384?auto=format&fit=crop&q=80&w=600" className="rounded-2xl h-64 w-full object-cover shadow-lg" alt="Finished product" />
+                  <img src="https://images.unsplash.com/photo-1621252178125-9610f4458373?auto=format&fit=crop&q=80&w=600" className="rounded-2xl h-64 w-full object-cover shadow-lg" alt="Luxury Satin Stack Detail" />
                 </div>
               </div>
               <div className="flex-1 space-y-8">
                 <h2 className="text-5xl font-serif">Made with Love, <br /><span className="text-blush">Worn with Confidence.</span></h2>
                 <p className="text-lg text-charcoal/70 leading-relaxed">
-                  Every Luna Loop is handcrafted in our small studio with the highest quality fabrics. We believe your hair accessories should be as kind as they are stylish.
+                  Every Luna Loop is handcrafted with the highest quality fabrics in India. We believe your hair accessories should be as kind as they are stylish.
                 </p>
                 <div className="space-y-4">
                   <div className="flex gap-4 items-start">
@@ -442,8 +438,8 @@ export default function App() {
                       <div className="w-2 h-2 bg-blush rounded-full"></div>
                     </div>
                     <div>
-                      <h4 className="font-bold">Handcrafted Quality</h4>
-                      <p className="text-sm text-charcoal/50">Small batch production ensures every piece meets our aesthetic standards.</p>
+                      <h4 className="font-bold">Artisanal Quality</h4>
+                      <p className="text-sm text-charcoal/50">Locally sourced fabrics and ethical production ensure every piece meets our aesthetic standards.</p>
                     </div>
                   </div>
                 </div>
@@ -529,11 +525,10 @@ export default function App() {
         </div>
         <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/30">
           <p>© 2024 Luna Loops. All rights reserved.</p>
-          <div className="flex gap-4">
-            <span>Visa</span>
-            <span>Mastercard</span>
-            <span>Amex</span>
-            <span>PayPal</span>
+          <div className="flex gap-4 items-center">
+            <span className="opacity-50">UPI</span>
+            <span className="opacity-50">Visa</span>
+            <span className="opacity-50">Mastercard</span>
           </div>
         </div>
       </footer>
